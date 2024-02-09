@@ -1,0 +1,28 @@
+<div class="lista-presion">
+    <a href="/" id="toHome"><i class="fa-solid fa-arrow-rotate-left"></i></a>
+    <h1>Registro</h1>
+    {{#if mostrarOpcionPredecir}}
+        <b><i class="fa-regular fa-user"></i>{{nombre_paciente}} <a href="/paciente/{{id_paciente}}/pronostico" id="predecir-option"><i class="fa-solid fa-chart-line"></i>Visualizacion</a></b>
+    {{/if}}
+    {{#each presiones}}
+        <div class="item-presion">
+            <div id="datos-pa">
+                <div id="pa_sistolica"><b>Presión Sistolica:</b><p>{{pa_sistolica}} mmHg</p></div>
+                <div id="pa_diastolica"><b>Presión Diastolica:</b><p>{{pa_diastolica}} mmHg</p></div>
+            </div>
+            <div id="fecha-captura">
+                <div id="amd">{{fecha}}</div>
+                <div id="hora">{{hora}}</div>
+            </div>
+            <i class="fa-regular fa-clock" id="icon-hora"></i>
+        </div>
+    {{/each}}
+    <button id="show-form" class="hide-show"><i class="fa-solid fa-plus"></i></button>
+    <form action="/add/pa/paciente/{{id_paciente}}" method="post" id="form-registrar-pa">
+        <button id="desplegar"><i class="fa-solid fa-angle-down"></i></button>
+        <i class="fa-regular fa-pen-to-square"></i>
+        <input type="number" name="pa_sistolica" id="pasinput" placeholder="Presión Sistolica en mmHg" required min="10">
+        <input type="number" name="pa_diastolica" id="padinput" placeholder="Presión Diastolica en mmHg" required min="10">
+        <button type="submit" id="btn-guardar-pa">Guardar</button>
+    </form>
+</div>
